@@ -38,7 +38,7 @@ export async function getPages(): Promise<Page[]> {
     groq`*[_type == 'page']{
       _id,
       _createdAt,
-      name,
+      title,
       'slug': slug.current,
     }`,
     // { next: { revalidate: 100 }}
@@ -50,7 +50,7 @@ export async function getPage(slug: string): Promise<Page> {
     groq`*[_type == "page" && slug.current == $slug][0]{
       _id,
       _createdAt,
-      name,
+      title,
       "slug": slug.current,
       content
     }`,
